@@ -1,0 +1,16 @@
+<html>
+    <header>
+        <title>contacts</title>
+        <link rel="stylesheet" href="/styles.css">
+    </header>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="delete-contacts">
+            <h1>Deleted contacts</h1> 
+            <img src="<%= contact.image %>" alt="Contact Image" />  
+                <h1><%= contact.title %></h1>
+                <h3><%= contact.snippet %></h3>
+                <p><%= contact.body %></p>       
+        </div>
+    </body>
+</html>

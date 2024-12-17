@@ -1,0 +1,23 @@
+<html>
+    <header>
+        <title>contacts</title>
+        <link rel="stylesheet" href="/styles.css">
+    </header>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="index">
+            <h1>All Contacts</h1>
+            <% if(contacts.length > 0){ %>
+                <% contacts.forEach(contact => { %>
+                    <a href="/all-mschema/<%= contact._id %>">  
+                        <h1><%= contact.title %></h1>
+                        <h3><%= contact.snippet %></h3>
+                        <img src="<%= contact.image %>" alt="Contact Image" />
+                    </a>
+                <% }) %>
+            <% }else{ %>
+                <h1>there are no contacts</h1>
+            <% } %>      
+        </div>
+    </body>
+</html>

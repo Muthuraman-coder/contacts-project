@@ -1,0 +1,27 @@
+<html>
+    <header>
+        <title>contacts</title>
+        <link rel="stylesheet" href="/styles.css">
+    </header>
+    <body>
+        <nav class="nav">
+            <div class="head-image">
+                <a href="/"><img src="/headimg.svg" ></a>
+            </div>
+        </nav>
+        <div class="signin">
+            <% if(alert){ %>
+                <h3 style="color: rgb(0, 76, 255);"><%= alert %></h3>
+            <% } %>
+            <form action="/signingnup" method="post">
+                <label>User name:</label>
+                <input type="text" id="username" name="username"/>
+                <label>Password:</label>
+                <input type="text" id="password" name="password"/>
+                <button>Sign up</button>
+            </form>
+            
+            <h4 style="color: black;">If you already have an account,then <a href="/signin">SIGN IN</a></h4>
+        </div>
+    </body>
+</html>

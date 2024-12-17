@@ -1,0 +1,23 @@
+<html>
+    <header>
+        <title>contacts</title>
+        <link rel="stylesheet" href="/styles.css">
+    </header>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="create-form">
+            <h1>Add contacts</h1>
+            <form action="/all-mschema" method="POST" enctype="multipart/form-data">
+                <label for="title">contact name:</label>
+                <input type="text" id="title" name="title"><br><br>
+                <label for="snippet">contact number:</label>
+                <input type="number" id="snippet" name="snippet"><br><br>
+                <label for="body">about contact</label>
+                <textarea id="body" name="body" required></textarea><br><br>
+                <label for="image">contact image</label>
+                <input type="file" id="image" name="image"><br><br>
+                <button>Add contact</button>
+            </form>       
+        </div>
+    </body>
+</html>

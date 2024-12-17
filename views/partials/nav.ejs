@@ -1,0 +1,43 @@
+<nav class="nav">
+  <div class="head-image">
+      <a href="/"><img src="/headimg.svg" ></a>
+  </div>
+  <div class="headers">
+      <ul>
+        <li><a href="/">Contacts</a></li>
+        <li><a href="/create">New Contact</a></li>
+        <form action="/search" method="get">
+          <input type="text" name="title" placeholder="Enter the name"/>
+          <button type="submit">Search</button>
+        </form>
+        <li><a href="/signin">SIGN IN</a></li>
+      </ul>
+  </div>
+  <div class="Options">
+      <a  class="dropbtn"><img src="/options.svg" ></a>
+        <ul class="dropdown-content">
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact-us">contact us</a></li>
+          <li><a href="/help">Help</a></li>
+          <li><a href="/backup">Backup Contact</a></li>
+        </ul>
+  </div>
+</nav>
+
+<script>
+ 
+  const dropbtn = document.querySelector('.dropbtn');
+  const dropdownContent = document.querySelector('.dropdown-content');
+
+  dropbtn.addEventListener('click', function() {
+    
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+  });
+
+  window.addEventListener('click', function(event) {
+    if (!dropbtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+      dropdownContent.style.display = 'none';
+    }
+  });
+</script>
+

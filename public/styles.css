@@ -1,0 +1,674 @@
+/* General Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #3498db, #2c3e50); /* Gradient background */
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Navigation Bar */
+.nav {
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Deep blue gradient */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav h1 {
+  font-size: 30px;
+  color: #fff;
+  margin-left: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav img.head-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.headers ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 25px;
+}
+
+.headers ul li a {
+  color: white;
+  background:  #3498db;
+  text-decoration: none;
+  padding: 14px 22px;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.headers ul li a:hover {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient hover effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Search Form */
+.headers form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headers form input {
+  padding: 14px 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.headers form input:focus {
+  border-color: #ff7e5f; /* Gradient matching color */
+  box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
+}
+
+.headers form button {
+  padding: 14px 20px;
+  font-size: 16px;
+  background:  #3498db; /* Gradient button */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.headers form button:hover {
+  background: linear-gradient(to right, #feb47b, #ff7e5f);
+  transform: scale(1.05);
+}
+
+/* Dropdown Menu */
+.Options {
+  position: relative;
+}
+
+.Options .dropbtn img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px; /* Space between the image and text */
+}
+
+.Options .dropbtn {
+  background:  #3498db; /* Purple to blue gradient */
+  color: white;
+  padding: 14px 22px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.Options .dropbtn:hover {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient hover effect */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color:  #3498db;
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dropdown-content li {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content li:hover {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient hover effect */
+}
+
+.dropdown-content hr {
+  margin: 5px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+/* Contact Page */
+.index {
+  padding: 50px 40px;
+  background: linear-gradient(to right, #3498db, #2c3e50);/* Gradient background */
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.index h1 {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.index a {
+  display: block;
+  background: linear-gradient(to right, #3498db, #2c3e50); /* Blue gradient background */
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.index a:hover {
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  background: linear-gradient(to right, #5ecff9, #64c4e7); /* Gradient on hover */
+}
+
+.index a h1 {
+  font-size: 28px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.index a h3 {
+  font-size: 20px;
+  color: #ddd;
+  margin-top: 10px;
+}
+
+.index a img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 4px solid #fff; /* Adding a white border for contrast */
+}
+
+/* Additional hover effects */
+.index a:hover img {
+  transform: scale(1.1); /* Slight zoom effect on image hover */
+}
+
+
+/* Form Styling */
+.create-form {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  padding: 45px 30px;
+  border-radius: 12px;
+  width: 60%;
+  margin: 50px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.create-form h1 {
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.create-form label {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.create-form input[type="text"],
+.create-form input[type="number"],
+.create-form textarea,
+.create-form input[type="file"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.create-form input[type="text"]:focus,
+.create-form input[type="number"]:focus,
+.create-form textarea:focus,
+.create-form input[type="file"]:focus {
+  border-color: #1abc9c;
+}
+
+.create-form button {
+  background-color: #1abc9c;
+  color: white;
+  padding: 16px 35px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-form button:hover {
+  background-color: #16a085;
+}
+
+/* Contact Details */
+.contact-details {
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient background from coral to orange */
+  padding: 45px 30px;
+  border-radius: 12px;
+  width: 75%;
+  margin: 50px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.contact-details h1 {
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.contact-details div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-details img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff; /* White border around the image for contrast */
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.contact-details img:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.contact-details h1.title {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.contact-details h3 {
+  font-size: 22px;
+  color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+.contact-details p {
+  font-size: 16px;
+  color: #f4f4f4;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-details .delete {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.contact-details .delete img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-details .delete img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+}
+
+/* Help & Support */
+.help {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  padding: 50px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.help h2 {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.help h3 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.help ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help ul li {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.help ul li strong {
+  font-size: 18px;
+  color: #2980b9;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.help ul li p {
+  font-size: 16px;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .create-form {
+    width: 90%;
+  }
+
+  .contact-details {
+    width: 90%;
+  }
+
+  .help {
+    padding: 20px;
+  }
+
+  .create-form h1, .contact-details h1 {
+    font-size: 28px;
+  }
+
+  .create-form label, .help h3 {
+    font-size: 16px;
+  }
+}
+
+.delete-contacts {
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Blue gradient */
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 80%;
+  margin: 50px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-align: center;
+}
+
+.delete-contacts h1 {
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.delete-contacts img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff; /* White border around the image */
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.delete-contacts img:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.delete-contacts h3 {
+  font-size: 22px;
+  color: #e1e1e1; /* Lighter color for subheading */
+  margin-bottom: 20px;
+}
+
+.delete-contacts p {
+  font-size: 16px;
+  color: #ddd; /* Soft light text color */
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.delete-contacts .delete {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.delete-contacts .delete img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.delete-contacts .delete img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+}
+
+.about {
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Blue gradient */
+  padding: 50px 30px;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+  width: 80%;
+  margin: 50px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about h2 {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.about p {
+  font-size: 18px;
+  color: #e1e1e1; /* Lighter text color for readability */
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about h3 {
+  font-size: 28px;
+  color: #fff;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.about ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about ul li {
+  font-size: 18px;
+  color: #e1e1e1;
+  margin-bottom: 10px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.team img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.team img:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.team h3 {
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Styling for the Sign-In Form Container */
+.signin {
+  background:  rgba(255, 255, 255, 0.9);
+  padding: 40px ;
+  border-radius: 12px;
+  width: 350px;
+  margin: 50px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signin:hover {
+  transform: scale(1.05); /* Slight zoom effect when hovering over the form */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
+}
+
+/* Style the Form Labels */
+.signin label {
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  text-transform: uppercase; /* For a more professional look */
+  letter-spacing: 0.5px;
+}
+
+/* Style the Input Fields */
+.signin input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  transition: border-color 0.3s ease;
+}
+
+/* Input Focus Effect */
+.signin input[type="text"]:focus {
+  border-color: #00bcd4; /* Light blue border when focused */
+  outline: none;
+  background-color: #fff;
+}
+
+/* Style for the Submit Button */
+.signin button {
+  background-color: #00bcd4; /* Blue color */
+  color: white;
+  padding: 12px 0;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.signin button:hover {
+  background-color: #0097a7; /* Slightly darker blue on hover */
+}
+
+/* Styling for the "Sign Up" Text */
+.signin h3 {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+}
+
+.signin h3 a {
+  color: #00bcd4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signin h3 a:hover {
+  text-decoration: underline;
+}
+
+/* Add responsiveness for mobile devices */
+@media (max-width: 480px) {
+  .signin {
+      width: 90%; /* Make the form full-width on smaller screens */
+      padding: 20px;
+  }
+
+  .signin h3 {
+      font-size: 14px; /* Smaller font size for the "Sign Up" link */
+  }
+}
