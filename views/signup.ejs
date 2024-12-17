@@ -14,11 +14,11 @@
                 <h3 style="color: rgb(0, 76, 255);"><%= alert %></h3>
             <% } %>
             <form action="/signingnup" method="post">
-                <label>User name:</label>
+                <label for="username">User name:</label>
                 <input type="text" id="username" name="username"/>
-                <label>Password:</label>
+                <label for="password">Password:</label>
                 <input type="text" id="password" name="password"/>
-                <button>Sign up</button>
+                <button type="submit">Sign up</button>
             </form>
             
             <h4 style="color: black;">If you already have an account,then <a href="/signin">SIGN IN</a></h4>

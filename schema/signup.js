@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const signup = new Schema({
     username:{
         type:String,
-        requires:true
+        requires:true,
+        unique:true
     },
     password:{
         type:String,

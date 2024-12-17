@@ -19,7 +19,7 @@ mongoose.connect(mdb)
     })
 
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.set('view engine' , 'ejs')
 app.use(morgan('dev'))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -54,33 +54,42 @@ app.get('/signup' , (req,res) =>{
 })
 
 app.post('/signingin', async (req,res) => {
-
-    try{
-        const user = await sschema.findOne({username : req.body.username});
-     
-        if(user.password===req.body.password){
-            res.redirect('/all-mschema')
-        }
-        else{
-            res.render('signup' , {alert : 'OOPS! your username or password is wrong , sign up!'})
-        }
-    }
-
-    catch(err){
-        console.log(err)
-        res.status(500).send('server error')
-    }
+    const {username , password} = req.body
+    sschema.findOne({username:username})
+        .then((user) => {
+            if(user){
+                if(user.password === password){
+                    req.session.username = user.username
+                    return res.redirect('/all-mschema')
+                    }
+                else{
+                    return res.render('signup' , {alert : 'OOPS! your username or password is wrong , sign up!'})
+                }
+            }else{
+                return res.render('signup' , {alert : 'OOPS! your username  is not found , sign up!'})
+            }
+        })
 })
 
 app.post('/signingnup',async (req,res) => {
+
+    const {username , password} = req.body
+    const sameusername = await sschema.findOne({username:username})
+        if(sameusername){
+            return res.render('signup' , {alert : 'username is already taken !'})
+        }
+
     const data = {
         username : req.body.username,
         password : req.body.password
     }
 
-    await sschema.insertMany([data])
-    res.redirect('/all-mschema')
+    await sschema.insertMany([data])   
+        res.redirect('/all-mschema')
+})
 
+app.get('/contacts',(rreq,res)=>{
+    res.redirect('/all-mschema')
 })
 
 app.get('/create',(req,res) =>{
