@@ -7,7 +7,7 @@
         <%- include('./partials/nav.ejs') %>
         <div class="create-form">
             <h1>Add contacts</h1>
-            <form action="/all-mschema" method="POST" enctype="multipart/form-data">
+            <form action="/all-mschema/:username" method="POST" enctype="multipart/form-data">
                 <label for="title">contact name:</label>
                 <input type="text" id="title" name="title"><br><br>
                 <label for="snippet">contact number:</label>

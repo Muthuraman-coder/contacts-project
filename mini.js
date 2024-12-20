@@ -59,8 +59,8 @@ app.post('/signingin', async (req,res) => {
         .then((user) => {
             if(user){
                 if(user.password === password){
-                    req.session.username = user.username
-                    return res.redirect('/all-mschema')
+                    req.session.userId = user._id;
+                    return res.redirect(`/all-mschema/${username}`)
                     }
                 else{
                     return res.render('signup' , {alert : 'OOPS! your username or password is wrong , sign up!'})
@@ -71,27 +71,21 @@ app.post('/signingin', async (req,res) => {
         })
 })
 
-app.post('/signingnup',async (req,res) => {
-
-    const {username , password} = req.body
-    const sameusername = await sschema.findOne({username:username})
-        if(sameusername){
-            return res.render('signup' , {alert : 'username is already taken !'})
-        }
-
-    const data = {
-        username : req.body.username,
-        password : req.body.password
+app.post('/signingnup', uploads.single('image'), async (req, res) => {
+    const { username, password } = req.body;
+    const sameUsername = await sschema.findOne({ username });
+    if (sameUsername) {
+        return res.render('signup', { alert: 'Username is already taken!' });
     }
+    const newUser = new sschema({ username, password });
+    await newUser.save();
+    res.redirect('/signin');
+});
 
-    await sschema.insertMany([data])   
-        res.redirect('/all-mschema')
+app.get('/contacts',(req,res)=>{
+   res.redirect('/all-mschema/:username')
 })
-
-app.get('/contacts',(rreq,res)=>{
-    res.redirect('/all-mschema')
-})
-
+    
 app.get('/create',(req,res) =>{
     res.render('create')
 })
@@ -108,47 +102,54 @@ app.get('/help' , (req,res) =>{
     res.render('help')
 })
 
-app.get('/all-mschema' , (req,res) => {
-    mschema.find().sort({createdAt : -1})
-     .then((result) =>{
-        res.render('index',{contacts : result})
-     })
-     .catch(err =>{
-        console.log(err)
-     })
-})
+app.get('/all-mschema/:username', (req, res) => {
+    const userId = req.session.userId;
 
-app.post('/all-mschema' , uploads.single('image'),(req,res) =>{
-    const {title , snippet , body } = req.body;
-    const imagepath = req.file ? req.file.path : null ;
+    mschema.find({ userId: userId }).sort({ createdAt: -1 })
+        .then((result) => {
+            res.render('index', { contacts : result });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 
-    const mcontacts = new mschema({
+app.post('/all-mschema/:username', uploads.single('image'), (req, res) => {
+    const { title, snippet, body } = req.body;
+    const imagepath = req.file ? req.file.path : null;
+    const userId = req.session.userId; 
+
+    const newContact = new mschema({
         title,
         snippet,
         body,
-        image : imagepath
-    })
+        image: imagepath,
+        userId: userId  
+    });
 
-    mcontacts.save()
-    .then(result => {
-        console.log(result)
-        res.redirect('/all-mschema')
-    })
-    .catch(err => {
-        console.log(err)
-    })
-})
+    newContact.save()
+        .then(result => {
+            console.log('Contact saved:', result);
+            res.redirect(`/all-mschema/${req.params.username}`);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 
-app.get('/all-mschema/:id', (req, res) => {
-    const id = req.params.id;
+
+app.get('/all-mschema/:username/:id', (req, res) => {
+    const { id, username } = req.params;
     mschema.findById(id)
-      .then(result => {
-        res.render('contact-details', { contact: result });
-      })
-      
-  });
+        .then(result => {
+            res.render('contact-details', { contact: result });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 
-app.get('/search' , (req,res) => {
+app.get('/search/:username' , (req,res) => {
     const searchname = req.query.title;
     mschema.find({
         title :{$regex : searchname , $options : 'i'}
@@ -159,27 +160,15 @@ app.get('/search' , (req,res) => {
 
 })
   
-app.delete('/all-mschema/:id', (req, res) => {
-    const id = req.params.id;
-
-    mschema.findById(id)
-        .then(result => {
-            console.log('delete item is here:' , result)
-            req.session.deletedContact = result
-            res.redirect('/backup')
+app.delete('/all-mschema/:username/:id', (req, res) => {
+    const { username, id } = req.params;
+    mschema.findByIdAndDelete(id)
+        .then(() => {
+            res.redirect(`/all-mschema/${username}`);
         })
-
-        mschema.findByIdAndDelete(id)
-            .then(result => {
-                //res.json({ redirect: '/all-mschema' });
-                console.log('item succesfully deleted')
-                
-            })
-})
-
- app.get('/backup', (req, res) => {
-     const deletedContact = req.session.deletedContact;
-     res.render('backup', { contact: deletedContact});
+        .catch(err => {
+            console.log(err);
+        });
 });
 
  app.use((req,res)=>{

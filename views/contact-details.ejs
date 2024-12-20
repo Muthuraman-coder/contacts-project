@@ -13,7 +13,7 @@
                     <h3><%= contact.snippet %></h3>
                     <p><%= contact.body %></p>
                 </div>
-                    <a class="delete" data-doc="<%= contact._id %>" href="/all-mschema">
+                    <a class="delete" data-doc="<%= contact._id %>" href="/all-mschema/:username">
                         <img src="/deleteicon.svg" />
                     </a>     
         </div>
@@ -21,7 +21,7 @@
             const trashcan = document.querySelector('a.delete');
         
             trashcan.addEventListener('click', (e) => {
-              const endpoint = `/all-mschema/${trashcan.dataset.doc}`;
+              const endpoint = `/all-mschema/:username/${trashcan.dataset.doc}`;
         
               fetch(endpoint, {method: 'DELETE',})
                 .then(response => response.json())
@@ -29,6 +29,6 @@
                 .catch(err => console.log(err));
             });
             
-          </script>
+        </script>
     </body>
 </html>

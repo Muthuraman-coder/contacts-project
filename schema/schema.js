@@ -18,7 +18,11 @@ const schema = new Schema(
         image:{
             type:String,
             requires:true
-        }
+        },
+        userId: { 
+            type: Schema.Types.ObjectId, 
+            ref: 'User',
+            required: true }
     }
 , { timestamps: true })
 
