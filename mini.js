@@ -6,6 +6,8 @@ const path = require('path')
 const mschema = require('./schema/schema')
 const session = require('express-session')
 const sschema = require('./schema/signup')
+const bcrypt = require('bcrypt')
+const { match } = require('assert')
 
 
 const app = express();
@@ -58,13 +60,15 @@ app.post('/signingin', async (req,res) => {
     sschema.findOne({username:username})
         .then((user) => {
             if(user){
-                if(user.password === password){
+                bcrypt.compare(password , user.password , (err , match)=> {
+                if(match){
                     req.session.userId = user._id;
                     return res.redirect(`/all-mschema/${username}`)
                     }
                 else{
                     return res.render('signup' , {alert : 'OOPS! your username or password is wrong , sign up!'})
                 }
+            })
             }else{
                 return res.render('signup' , {alert : 'OOPS! your username  is not found , sign up!'})
             }
@@ -77,9 +81,11 @@ app.post('/signingnup', uploads.single('image'), async (req, res) => {
     if (sameUsername) {
         return res.render('signup', { alert: 'Username is already taken!' });
     }
-    const newUser = new sschema({ username, password });
-    await newUser.save();
-    res.redirect('/signin');
+    bcrypt.hash(password, 10, async (err, hashedPassword) => {
+        const newUser = new sschema({ username, password: hashedPassword });
+        await newUser.save();
+        res.redirect('/signin');
+    });
 });
 
 app.get('/contacts',(req,res)=>{
