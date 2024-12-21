@@ -10,6 +10,10 @@ const signup = new Schema({
     password:{
         type:String,
         requires:true
+    },
+    cpassword:{
+        type:String,
+        requires:true
     }
 })
 

@@ -56,7 +56,7 @@ app.get('/signup' , (req,res) =>{
 })
 
 app.post('/signingin', async (req,res) => {
-    const {username , password} = req.body
+    const {username , password , cpassword} = req.body
     sschema.findOne({username:username})
         .then((user) => {
             if(user){
@@ -75,17 +75,28 @@ app.post('/signingin', async (req,res) => {
         })
 })
 
+function strongpassword(password){
+    const must = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return must.test(password)
+}
+
 app.post('/signingnup', uploads.single('image'), async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password , cpassword } = req.body;
     const sameUsername = await sschema.findOne({ username });
     if (sameUsername) {
         return res.render('signup', { alert: 'Username is already taken!' });
     }
-    bcrypt.hash(password, 10, async (err, hashedPassword) => {
-        const newUser = new sschema({ username, password: hashedPassword });
+    if(password !== cpassword){
+        res.render('signup',{ alert: 'password do not match!' })
+    }
+    if(!strongpassword(password)){
+        res.render('signup',{ alert: 'Password must be at least 8 characters long, a number, and a special character!' })
+    }else{
+        bcrypt.hash(password, 10, async (err, hashedPassword) => {
+        const newUser = new sschema({ username, password: hashedPassword , cpassword: hashedPassword });
         await newUser.save();
         res.redirect('/signin');
-    });
+    })};
 });
 
 app.get('/contacts',(req,res)=>{
